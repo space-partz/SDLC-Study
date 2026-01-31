@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Discussion: SDLC Effectiveness and Agile — SDLC Study</title>
+  <style>
+    :root { --bg: #1a1d23; --surface: #242830; --text: #e6e9ef; --muted: #9ca0ab; --accent: #7c9ce0; --border: #3d424d; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; margin: 0; padding: 2rem; max-width: 52rem; margin-left: auto; margin-right: auto; }
+    a { color: var(--accent); }
+    .nav-top { margin-bottom: 2rem; font-size: 0.9rem; }
+    .nav-top a { text-decoration: none; }
+    .nav-top a:hover { text-decoration: underline; }
+    .questions { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+    .questions p { margin: 0 0 0.5rem; }
+    .questions p:last-child { margin-bottom: 0; }
+    h1 { font-size: 1.75rem; font-weight: 600; margin: 0 0 1.5rem; }
+    h2 { font-size: 1.35rem; font-weight: 600; margin: 2rem 0 0.75rem; padding-top: 0.5rem; }
+    p { margin: 0 0 1rem; }
+    strong { font-weight: 600; color: #fff; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    ul { margin: 0 0 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.35rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav-top"><a href="index.html">← SDLC Study index</a></nav>
+
+  <h1>Class Discussion: SDLC Effectiveness and Agile in the Enterprise</h1>
+
+  <div class="questions">
+    <p><strong>Question 1:</strong> Which software development life cycle (SDLC) model is most effective for different types of projects, and why?</p>
+    <p><strong>Question 2:</strong> Do you believe Agile has failed in many corporate implementations?</p>
+  </div>
+
+  <hr>
+
+  <h2>Article Summary</h2>
+  <p>The readings argue that <strong>no single SDLC is universally "best."</strong> Effectiveness depends less on methodology preference and more on <strong>team size and the resulting communication complexity</strong>. The number of potential communication links between people grows quadratically with team size (n × (n − 1) / 2). That coordination overhead is the main constraint that determines which process can work and which will break down.</p>
+  <p><strong>SDLC by context:</strong></p>
+  <ul>
+    <li><strong>Solo / two-person teams:</strong> Lightweight flow works best—e.g., Kanban for solo work, or a hybrid of adapted Scrum (e.g., 1-week sprints, minimal ceremonies), Kanban, prototyping, DevOps, and RAD for two-person teams. Waterfall and full Scrum are poor fits (documentation and role overhead with little benefit).</li>
+    <li><strong>Small teams (3–9):</strong> This is Agile's natural range. Scrum, XP, and Kanban are effective because communication links stay manageable; ceremonies add structure without overwhelming the team. Choice among them depends on requirements clarity, technical risk, customer availability, and delivery cadence.</li>
+    <li><strong>Medium teams (10–30):</strong> Informal, single-team Agile starts to strain. Coordination (e.g., 105 links for 15 people) demands more structure: Scaled Agile (SAFe), Spiral, or V-Model, depending on need for flexibility vs. traceability and regulation.</li>
+    <li><strong>Large teams (30+):</strong> Pure Agile "by the book" is not viable. Success requires either heavy process (Waterfall phase gates, SAFe), architectural decomposition (e.g., microservices so the org behaves like many small teams), or hybrids (e.g., Waterfall governance with Agile delivery). The analysis cites microservices/DevOps-style decomposition as achieving the highest success rate by turning a large-team problem into many small-team problems.</li>
+  </ul>
+  <p>So <strong>the most effective SDLC is the one that matches the communication reality of the team and project</strong>—not the one that is trendy or "best practice" in the abstract.</p>
+
+  <hr>
+
+  <h2>Has Agile Failed in Corporate Implementations?</h2>
+  <p>The material does <strong>not</strong> say Agile itself has failed. It explains why Agile often <strong>underperforms or feels broken in many corporate settings</strong>.</p>
+  <p>Agile (Scrum, XP) is designed for <strong>small, co-located or tightly coupled teams</strong> with few communication links. In that context, it structures collaboration and reduces overhead. In corporations, Agile is frequently applied to:</p>
+  <ul>
+    <li><strong>Medium or large teams</strong> without scaling (e.g., SAFe) or decomposition (e.g., microservices),</li>
+    <li><strong>Cross-team programs</strong> where dependencies and handoffs multiply,</li>
+    <li><strong>Governance-heavy or regulated environments</strong> where informal, ceremony-light Agile clashes with compliance and audit needs.</li>
+  </ul>
+  <p>In those situations, the same practices that help small teams—daily standups, sprint planning, informal alignment—can become <strong>overhead</strong>: more meetings, more alignment work, and slower delivery as link count grows. So the "failure" is often <strong>misapplication</strong>—using a small-team Agile model in a context where communication complexity has already made that model a bad fit.</p>
+  <p>The conclusion from the readings: <strong>Agile has not failed as an idea; it is often applied in the wrong context.</strong> Success depends on aligning the SDLC (whether Agile, Waterfall, SAFe, or hybrid) with team size, structure, and organizational reality, rather than treating one model as the default for every project.</p>
+
+  <p style="margin-top: 2rem;"><a href="index.html">← Back to index</a></p>
+</body>
+</html>
