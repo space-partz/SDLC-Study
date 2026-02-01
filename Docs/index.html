@@ -4,34 +4,217 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SDLC Study — Document Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #1a1d23; --surface: #242830; --text: #e6e9ef; --muted: #9ca0ab; --accent: #7c9ce0; --border: #3d424d; }
+    :root {
+      --bg: #0f1116;
+      --bg-elevated: #161a22;
+      --surface: #1c2129;
+      --surface-hover: #232a34;
+      --text: #e8eaef;
+      --text-soft: #9ba3b4;
+      --accent: #6b9fff;
+      --accent-soft: rgba(107, 159, 255, 0.15);
+      --border: #2a3140;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --tag-article: #4a9c6d;
+      --tag-media: #c77dff;
+      --tag-discussion: #f59e42;
+    }
     * { box-sizing: border-box; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 2rem; max-width: 52rem; margin-left: auto; margin-right: auto; }
-    h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
-    p { margin: 0 0 1rem; color: var(--muted); }
-    nav { margin-top: 2rem; }
-    nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-    nav a { display: block; padding: 1rem 1.25rem; background: var(--surface); color: var(--accent); text-decoration: none; border-radius: 8px; border: 1px solid var(--border); transition: background 0.2s; }
-    nav a:hover { background: #2d323d; }
-    nav a strong { display: block; color: var(--text); margin-bottom: 0.25rem; }
-    nav a span { font-size: 0.9rem; color: var(--muted); }
+    body {
+      font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .site-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+      color: var(--text);
+    }
+    .site-desc {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 36rem;
+    }
+    .content-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section:last-child { margin-bottom: 0; }
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+      margin: 0 0 1rem;
+      padding-bottom: 0.5rem;
+    }
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text);
+      margin: 0;
+    }
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .card-tag--article { background: rgba(74, 156, 109, 0.2); color: #6bc492; }
+    .card-tag--media { background: rgba(199, 125, 255, 0.2); color: #d4a8ff; }
+    .card-tag--discussion { background: rgba(245, 158, 66, 0.2); color: #fbbf7a; }
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--text-soft);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .card-desc + .card-title { margin-top: 0.35rem; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+    footer p { margin: 0; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>SDLC Study</h1>
-    <p>Documents on software development life cycle models, communication complexity, and two-person team frameworks.</p>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="comparative-analysis.html"><strong>Comparative Analysis of SDLC Models</strong><span>Communication complexity, team size, and model fit</span></a></li>
-      <li><a href="strategic-memo.html"><strong>Strategic Memo: Hybrid SDLC for Two-Person Teams</strong><span>Purpose-built framework for maximizing two-person team performance</span></a></li>
-      <li><a href="duodev-blueprint.html"><strong>The DuoDev Blueprint</strong><span>Strategic plan for synchronicity and growth—Co-Mono Framework for two-person teams</span></a></li>
-      <li><a href="class-discussion.html"><strong>Class Discussion: SDLC Effectiveness and Agile</strong><span>Which SDLC fits which projects; has Agile failed in the enterprise?</span></a></li>
-      <li><a href="video.html"><strong>The Agile Paradox</strong><span>Video on the paradox of Agile adoption and scaling</span></a></li>
-      <li><a href="podcast.html"><strong>Why Corporate Agile Is Just Theater</strong><span>Podcast on when Agile becomes ritual without results</span></a></li>
-    </ul>
-  </nav>
+  <div class="page">
+    <header>
+      <h1 class="site-title">SDLC Study</h1>
+      <p class="site-desc">Software development life cycle models, communication complexity, and frameworks for small and two-person teams. Content is grouped by theme; more may be added over time.</p>
+    </header>
+
+    <div class="content-grid">
+      <section class="section" aria-labelledby="sec-foundations">
+        <h2 id="sec-foundations" class="section-title">Foundations &amp; Analysis</h2>
+        <div class="card-list">
+          <a href="comparative-analysis.html" class="card">
+            <div class="card-head">
+              <span class="card-title">Comparative Analysis of SDLC Models</span>
+              <span class="card-tag card-tag--article">Article</span>
+            </div>
+            <p class="card-desc">Communication complexity, team size, and which model fits. Grounded in the math of coordination overhead.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="sec-twoperson">
+        <h2 id="sec-twoperson" class="section-title">Two-Person Team Frameworks</h2>
+        <div class="card-list">
+          <a href="strategic-memo.html" class="card">
+            <div class="card-head">
+              <span class="card-title">Strategic Memo: Hybrid SDLC for Two-Person Teams</span>
+              <span class="card-tag card-tag--article">Article</span>
+            </div>
+            <p class="card-desc">Purpose-built hybrid (Scrum, Kanban, prototyping, DevOps, RAD) for maximizing two-person team performance.</p>
+          </a>
+          <a href="duodev-blueprint.html" class="card">
+            <div class="card-head">
+              <span class="card-title">The DuoDev Blueprint</span>
+              <span class="card-tag card-tag--article">Article</span>
+            </div>
+            <p class="card-desc">Strategic plan for synchronicity and growth—Co-Mono Framework for husband-and-wife or close two-person teams.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="sec-discussion">
+        <h2 id="sec-discussion" class="section-title">Discussion &amp; Synthesis</h2>
+        <div class="card-list">
+          <a href="class-discussion.html" class="card">
+            <div class="card-head">
+              <span class="card-title">SDLC Effectiveness and Agile in the Enterprise</span>
+              <span class="card-tag card-tag--discussion">Discussion</span>
+            </div>
+            <p class="card-desc">Which SDLC fits which projects, and why; has Agile failed in corporate implementations?</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="sec-media">
+        <h2 id="sec-media" class="section-title">Watch &amp; Listen</h2>
+        <div class="card-list">
+          <a href="video.html" class="card">
+            <div class="card-head">
+              <span class="card-title">The Agile Paradox</span>
+              <span class="card-tag card-tag--media">Video</span>
+            </div>
+            <p class="card-desc">On the paradox of Agile adoption and scaling—when process becomes performance.</p>
+          </a>
+          <a href="podcast.html" class="card">
+            <div class="card-head">
+              <span class="card-title">Why Corporate Agile Is Just Theater</span>
+              <span class="card-tag card-tag--media">Podcast</span>
+            </div>
+            <p class="card-desc">When Agile becomes ritual without results in large organizations.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>SDLC Study · Content may be expanded; sections and cards are structured to scale.</p>
+    </footer>
+  </div>
 </body>
 </html>
