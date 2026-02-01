@@ -3,29 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Class Discussion: SDLC Effectiveness and Agile — SDLC Study</title>
+  <title>Class Discussion: SDLC Effectiveness and Agile — Smart Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #1a1d23; --surface: #242830; --text: #e6e9ef; --muted: #9ca0ab; --accent: #7c9ce0; --border: #3d424d; }
+    :root { --paper: #f8f6f3; --paper-shadow: #e8e4dc; --surface: #f0ede8; --ink: #1a1916; --ink-soft: #4a4742; --ink-muted: #7a756d; --accent: #b54a2a; --rule: #d4cfc6; --gutter: #c4beb4; }
     * { box-sizing: border-box; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; margin: 0; padding: 2rem; max-width: 52rem; margin-left: auto; margin-right: auto; }
-    a { color: var(--accent); }
-    .nav-top { margin-bottom: 2rem; font-size: 0.9rem; }
-    .nav-top a { text-decoration: none; }
-    .nav-top a:hover { text-decoration: underline; }
-    .questions { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+    html { background: #2a2722; }
+    body { font-family: 'Source Sans 3', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; margin: 2rem auto 4rem; padding: 2.5rem 2.25rem; max-width: 52rem; box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.05); border-radius: 2px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .folio { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .folio a { color: var(--accent); }
+    .questions { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
     .questions p { margin: 0 0 0.5rem; }
     .questions p:last-child { margin-bottom: 0; }
-    h1 { font-size: 1.75rem; font-weight: 600; margin: 0 0 1.5rem; }
-    h2 { font-size: 1.35rem; font-weight: 600; margin: 2rem 0 0.75rem; padding-top: 0.5rem; }
+    h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.75rem; font-weight: 700; margin: 0 0 1.5rem; color: var(--ink); line-height: 1.3; }
+    h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.75rem; padding-top: 0.5rem; color: var(--ink); }
     p { margin: 0 0 1rem; }
-    strong { font-weight: 600; color: #fff; }
-    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    strong { font-weight: 600; color: var(--ink); }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
     ul { margin: 0 0 1rem; padding-left: 1.5rem; }
     li { margin-bottom: 0.35rem; }
+    .back { margin-top: 2rem; font-size: 0.9rem; }
   </style>
 </head>
 <body>
-  <nav class="nav-top"><a href="index.html">← SDLC Study index</a></nav>
+  <nav class="folio">
+    <span>Smart Study — SDLC Study Issue · No. 1 · January 2026 · Researcher: Muhammad Hakeem</span>
+    <a href="index.html">← Index</a>
+  </nav>
 
   <h1>Class Discussion: SDLC Effectiveness and Agile in the Enterprise</h1>
 
@@ -60,6 +68,6 @@
   <p>In those situations, the same practices that help small teams—daily standups, sprint planning, informal alignment—can become <strong>overhead</strong>: more meetings, more alignment work, and slower delivery as link count grows. So the "failure" is often <strong>misapplication</strong>—using a small-team Agile model in a context where communication complexity has already made that model a bad fit.</p>
   <p>The conclusion from the readings: <strong>Agile has not failed as an idea; it is often applied in the wrong context.</strong> Success depends on aligning the SDLC (whether Agile, Waterfall, SAFe, or hybrid) with team size, structure, and organizational reality, rather than treating one model as the default for every project.</p>
 
-  <p style="margin-top: 2rem;"><a href="index.html">← Back to index</a></p>
+  <p class="back"><a href="index.html">← Back to index</a></p>
 </body>
 </html>

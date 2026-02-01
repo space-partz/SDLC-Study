@@ -3,218 +3,265 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SDLC Study — Document Index</title>
+  <title>Smart Study: SDLC Study Issue</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f1116;
-      --bg-elevated: #161a22;
-      --surface: #1c2129;
-      --surface-hover: #232a34;
-      --text: #e8eaef;
-      --text-soft: #9ba3b4;
-      --accent: #6b9fff;
-      --accent-soft: rgba(107, 159, 255, 0.15);
-      --border: #2a3140;
-      --radius: 12px;
-      --radius-sm: 8px;
-      --tag-article: #4a9c6d;
-      --tag-media: #c77dff;
-      --tag-discussion: #f59e42;
+      --paper: #f8f6f3;
+      --paper-shadow: #e8e4dc;
+      --ink: #1a1916;
+      --ink-soft: #4a4742;
+      --ink-muted: #7a756d;
+      --accent: #b54a2a;
+      --rule: #d4cfc6;
+      --gutter: #c4beb4;
     }
     * { box-sizing: border-box; }
+    html { background: #2a2722; }
     body {
-      font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      color: var(--ink);
       margin: 0;
-      padding: 0;
+      padding: 2rem 1rem 4rem;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .spread {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      min-height: 80vh;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--paper-shadow);
     }
     .page {
-      max-width: 56rem;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      flex: 1 1 50%;
+      min-width: 0;
+      background: var(--paper);
+      padding: 2.5rem 2.25rem 3rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
-    header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
+    .page--left {
+      border-right: 1px solid var(--gutter);
+      padding-right: 2rem;
     }
-    .site-title {
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
+    .page--right {
+      padding-left: 2rem;
+    }
+    .masthead {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 0 0 0.5rem;
-      color: var(--text);
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin: 0 0 0.25rem;
+      line-height: 1.2;
     }
-    .site-desc {
-      margin: 0;
-      font-size: 1rem;
-      color: var(--text-soft);
-      max-width: 36rem;
+    .masthead-tag {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
     }
-    .content-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-    .section {
-      margin-bottom: 2.5rem;
-    }
-    .section:last-child { margin-bottom: 0; }
-    .section-title {
+    .masthead-meta {
       font-size: 0.75rem;
+      color: var(--ink-soft);
+      margin: 0 0 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.6;
+    }
+    .masthead-meta strong { color: var(--ink); }
+    .toc-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      margin: 0 0 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 0.5rem; }
+    .toc-list a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.4;
+      display: block;
+      padding: 0.2rem 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .toc-list a:hover { color: var(--accent); border-bottom-color: var(--rule); }
+    .toc-list .toc-meta { font-size: 0.75rem; color: var(--ink-muted); margin-top: 0.15rem; }
+    .dept {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+    }
+    .dept-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      margin: 0 0 0.85rem;
+    }
+    .feature {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .feature:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .feature:hover .feature-headline { color: var(--accent); }
+    .feature-tag {
+      font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--text-soft);
-      margin: 0 0 1rem;
-      padding-bottom: 0.5rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.35rem;
     }
-    .card-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+    .feature-headline {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 0.4rem;
+      color: var(--ink);
+      transition: color 0.2s;
     }
-    .card {
-      display: block;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.35rem;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
-    }
-    .card:hover {
-      background: var(--surface-hover);
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent-soft);
-    }
-    .card-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.35;
-      color: var(--text);
-      margin: 0;
-    }
-    .card-tag {
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-    .card-tag--article { background: rgba(74, 156, 109, 0.2); color: #6bc492; }
-    .card-tag--media { background: rgba(199, 125, 255, 0.2); color: #d4a8ff; }
-    .card-tag--discussion { background: rgba(245, 158, 66, 0.2); color: #fbbf7a; }
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--text-soft);
-      margin: 0;
+    .feature-dek {
+      font-size: 0.85rem;
       line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0;
     }
-    .card-desc + .card-title { margin-top: 0.35rem; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--text-soft);
+    .page-folio {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
     }
-    footer p { margin: 0; }
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.05em;
+    }
+    .page--left .page-number { left: 2.25rem; }
+    .page--right .page-number { right: 2.25rem; }
+    @media (max-width: 768px) {
+      .spread { flex-direction: column; min-height: auto; }
+      .page--left { border-right: none; border-bottom: 1px solid var(--gutter); padding-bottom: 2rem; }
+      .page--right { padding-left: 2.25rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <h1 class="site-title">SDLC Study</h1>
-      <p class="site-desc">Software development life cycle models, communication complexity, and frameworks for small and two-person teams. Content is grouped by theme; more may be added over time.</p>
-    </header>
+  <div class="spread" role="main" aria-label="Contents">
+    <!-- Left facing page -->
+    <div class="page page--left">
+      <h1 class="masthead">Smart Study</h1>
+      <p class="masthead-tag">SDLC Study Issue</p>
+      <div class="masthead-meta">
+        <strong>Issue No. 1</strong> · January 2026<br>
+        Researcher: <strong>Muhammad Hakeem</strong>
+      </div>
 
-    <div class="content-grid">
-      <section class="section" aria-labelledby="sec-foundations">
-        <h2 id="sec-foundations" class="section-title">Foundations &amp; Analysis</h2>
-        <div class="card-list">
-          <a href="comparative-analysis.html" class="card">
-            <div class="card-head">
-              <span class="card-title">Comparative Analysis of SDLC Models</span>
-              <span class="card-tag card-tag--article">Article</span>
-            </div>
-            <p class="card-desc">Communication complexity, team size, and which model fits. Grounded in the math of coordination overhead.</p>
-          </a>
-        </div>
-      </section>
+      <h2 class="toc-label">In this issue</h2>
+      <ul class="toc-list">
+        <li><a href="comparative-analysis.html">Comparative Analysis of SDLC Models<span class="toc-meta">Communication complexity, team size, and model fit</span></a></li>
+        <li><a href="strategic-memo.html">Strategic Memo: Hybrid SDLC for Two-Person Teams<span class="toc-meta">Purpose-built framework for two-person performance</span></a></li>
+        <li><a href="duodev-blueprint.html">The DuoDev Blueprint<span class="toc-meta">Synchronicity and growth—Co-Mono Framework</span></a></li>
+        <li><a href="class-discussion.html">SDLC Effectiveness and Agile in the Enterprise<span class="toc-meta">Which SDLC fits; has Agile failed?</span></a></li>
+        <li><a href="video.html">The Agile Paradox<span class="toc-meta">Video</span></a></li>
+        <li><a href="podcast.html">Why Corporate Agile Is Just Theater<span class="toc-meta">Podcast</span></a></li>
+      </ul>
 
-      <section class="section" aria-labelledby="sec-twoperson">
-        <h2 id="sec-twoperson" class="section-title">Two-Person Team Frameworks</h2>
-        <div class="card-list">
-          <a href="strategic-memo.html" class="card">
-            <div class="card-head">
-              <span class="card-title">Strategic Memo: Hybrid SDLC for Two-Person Teams</span>
-              <span class="card-tag card-tag--article">Article</span>
-            </div>
-            <p class="card-desc">Purpose-built hybrid (Scrum, Kanban, prototyping, DevOps, RAD) for maximizing two-person team performance.</p>
-          </a>
-          <a href="duodev-blueprint.html" class="card">
-            <div class="card-head">
-              <span class="card-title">The DuoDev Blueprint</span>
-              <span class="card-tag card-tag--article">Article</span>
-            </div>
-            <p class="card-desc">Strategic plan for synchronicity and growth—Co-Mono Framework for husband-and-wife or close two-person teams.</p>
-          </a>
-        </div>
-      </section>
+      <div class="dept">
+        <h3 class="dept-title">Departments</h3>
+        <p style="font-size: 0.85rem; color: var(--ink-soft); margin: 0; line-height: 1.5;">Foundations &amp; Analysis · Two-Person Frameworks · Discussion &amp; Synthesis · Watch &amp; Listen</p>
+      </div>
 
-      <section class="section" aria-labelledby="sec-discussion">
-        <h2 id="sec-discussion" class="section-title">Discussion &amp; Synthesis</h2>
-        <div class="card-list">
-          <a href="class-discussion.html" class="card">
-            <div class="card-head">
-              <span class="card-title">SDLC Effectiveness and Agile in the Enterprise</span>
-              <span class="card-tag card-tag--discussion">Discussion</span>
-            </div>
-            <p class="card-desc">Which SDLC fits which projects, and why; has Agile failed in corporate implementations?</p>
-          </a>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="sec-media">
-        <h2 id="sec-media" class="section-title">Watch &amp; Listen</h2>
-        <div class="card-list">
-          <a href="video.html" class="card">
-            <div class="card-head">
-              <span class="card-title">The Agile Paradox</span>
-              <span class="card-tag card-tag--media">Video</span>
-            </div>
-            <p class="card-desc">On the paradox of Agile adoption and scaling—when process becomes performance.</p>
-          </a>
-          <a href="podcast.html" class="card">
-            <div class="card-head">
-              <span class="card-title">Why Corporate Agile Is Just Theater</span>
-              <span class="card-tag card-tag--media">Podcast</span>
-            </div>
-            <p class="card-desc">When Agile becomes ritual without results in large organizations.</p>
-          </a>
-        </div>
-      </section>
+      <span class="page-number" aria-hidden="true">1</span>
     </div>
 
-    <footer>
-      <p>SDLC Study · Content may be expanded; sections and cards are structured to scale.</p>
-    </footer>
+    <!-- Right facing page -->
+    <div class="page page--right">
+      <p class="page-folio">Smart Study — SDLC Study Issue · No. 1 · January 2026 · Researcher: Muhammad Hakeem</p>
+      <h2 class="toc-label">Features</h2>
+
+      <section class="dept">
+        <h3 class="dept-title">Foundations &amp; Analysis</h3>
+        <a href="comparative-analysis.html" class="feature">
+          <span class="feature-tag">Article</span>
+          <h4 class="feature-headline">Comparative Analysis of SDLC Models Through the Lens of Communication Complexity</h4>
+          <p class="feature-dek">Communication links, team size, and which model fits. Grounded in the math of coordination overhead and Brooks's Law.</p>
+        </a>
+      </section>
+
+      <section class="dept">
+        <h3 class="dept-title">Two-Person Team Frameworks</h3>
+        <a href="strategic-memo.html" class="feature">
+          <span class="feature-tag">Article</span>
+          <h4 class="feature-headline">Strategic Memo: A Hybrid SDLC Framework for Maximizing Two-Person Team Performance</h4>
+          <p class="feature-dek">Scrum, Kanban, prototyping, DevOps, and RAD—purpose-built for the single-communication-link advantage.</p>
+        </a>
+        <a href="duodev-blueprint.html" class="feature">
+          <span class="feature-tag">Article</span>
+          <h4 class="feature-headline">The DuoDev Blueprint: A Strategic Plan for Synchronicity and Growth</h4>
+          <p class="feature-dek">The Co-Mono Framework for husband-and-wife or close two-person teams—vision, validation, and flow.</p>
+        </a>
+      </section>
+
+      <section class="dept">
+        <h3 class="dept-title">Discussion &amp; Synthesis</h3>
+        <a href="class-discussion.html" class="feature">
+          <span class="feature-tag">Discussion</span>
+          <h4 class="feature-headline">SDLC Effectiveness and Agile in the Enterprise</h4>
+          <p class="feature-dek">Which SDLC is most effective for different projects; do we believe Agile has failed in corporate implementations?</p>
+        </a>
+      </section>
+
+      <section class="dept">
+        <h3 class="dept-title">Watch &amp; Listen</h3>
+        <a href="video.html" class="feature">
+          <span class="feature-tag">Video</span>
+          <h4 class="feature-headline">The Agile Paradox</h4>
+          <p class="feature-dek">When Agile adoption and scaling turn process into performance.</p>
+        </a>
+        <a href="podcast.html" class="feature">
+          <span class="feature-tag">Podcast</span>
+          <h4 class="feature-headline">Why Corporate Agile Is Just Theater</h4>
+          <p class="feature-dek">Ritual without results in large organizations.</p>
+        </a>
+      </section>
+
+      <span class="page-number" aria-hidden="true">2</span>
+    </div>
   </div>
 </body>
 </html>
